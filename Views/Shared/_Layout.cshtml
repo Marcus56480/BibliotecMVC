@@ -8,11 +8,11 @@
     <link rel="stylesheet" href="~/css/global.css">
 
     @** Permite adicionar conteudo especificos de cada view ao layout *@
-    @await RenderSectionAsync("Styles", required: false);
+    @await RenderSectionAsync("Styles", required: false)
 </head>
 <body>
-    @RenderBody();
+    @RenderBody()
 
-    @await RenderSectionAsync("Scripts", required: false);
+    @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
