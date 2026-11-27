@@ -3,6 +3,11 @@ using BibliotecMVC.Models;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using DotNetEnv;
+
+// Carrega as variaveis de ambiente do arquivo .env
+// A ordem é importante -> Precisamos carregar as variaveis de ambiente(env) antes de inicializar as configurações da aplicação
+Env.Load();
 
 var builder = WebApplication.CreateBuilder(args);
 
