@@ -5,6 +5,7 @@ using BibliotecMVC.Models;
 using BibliotecMVC.ViewModels;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -128,5 +129,24 @@ public class LoginController : Controller
 
         // Redireciona o usuario para a tela Home, após o login ser bem-sucessidido
         return RedirectToAction("Index", "Home");
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> Logout()
+    {
+        // Remove os cookies de autenticação
+        await HttpContext.SignOutAsync(
+            CookieAuthenticationDefaults.AuthenticationScheme
+        );
+
+        // Redireciona o usuário para a tela de login
+        return RedirectToAction("Index", "Login");
+    }
+
+    [HttpGet]
+    // [Authorize]
+    public IActionResult AcessoNegado()
+    {
+        return View();
     }
 }
